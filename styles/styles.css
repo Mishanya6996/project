@@ -4,5 +4,9 @@
 .header {
   padding-top: 43px;
   padding-bottom: 43px;
-  
+}
+.header-actions {
+  max-width:1160.58px;
+  margin-inline: auto;
+}
   
