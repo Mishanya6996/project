@@ -1,14 +1,15 @@
 *{
   margin: 0;
   padding: 0;
-.header {
-  padding-top: 43px;
-  padding-bottom: 43px;
 }
-.header-actions {
+.header {
+  padding-block: 43px;
+}
+.header__container {
   max-width:1160.58px;
   margin-inline: auto;
 }
-.main-nav {
+.header__nav {
   display: flex;
+  justify-content: space-between;
 }
