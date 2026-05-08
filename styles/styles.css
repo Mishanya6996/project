@@ -246,3 +246,19 @@ body {
     object-fit: contain;  /* Чтобы картинка не искажалась */
     display: inline-block;
 }
+.hero_title .highlight-word {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-image {
+    position: absolute;
+    display: flex;
+    
+    bottom: -10px;
+    left: 0;
+    width: 385px;
+    height: 12px;
+    height: auto;
+    pointer-events: none; /* чтобы картинка не мешала кликам */
+}
