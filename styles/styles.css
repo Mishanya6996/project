@@ -85,6 +85,12 @@ body {
     display: flex;
     align-items: center;
     gap: 60px;
+    width: 100%;
+}
+
+.hero_image {
+    flex: 1.2;         /* увеличиваем занимаемое место (было 1) */
+    text-align: center;
 }
 
 .hero_content {
@@ -225,15 +231,15 @@ body {
 .hero_image {
     flex: 1;
     text-align: center;
-    max-width: 50%;        /* Картинка не шире половины hero блока */
+    position: relative;
 }
 
 .hero_img {
-    width: 100%;           /* Растягивается на всю ширину своего контейнера */
-    max-width: 450px;      /* НО не шире 450px (фиксированный лимит) */
-    height: auto;          /* Высота автоматически подстраивается под ширину */
-    display: inline-block;
-    border-radius: 30px;   /* Скругление для красоты */
+    width: 100%;
+    max-width: 550px;   /* увеличил с 450px до 550px */
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 .service_icon {
     text-align: center;
@@ -251,14 +257,48 @@ body {
     display: inline-block;
 }
 
-.underline-image {
+.hero_title .highlight-word {
+    position: relative;
+    display: inline-block;
+}
+
+.hero_title .highlight-word::after {
+    content: '';
     position: absolute;
-    display: flex;
-    
-    bottom: -10px;
-    left: 0;
-    width: 385px;
+    bottom: 0;
+    left: -30px;                  /* на 10px левее */
+    width: calc(100% + 150px);     /* на 20px шире слова */
     height: 12px;
+    background-image: url('../images/decore_4.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.hero_image {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.hero_image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Оранжевый декор позади путешественницы */
+.hero_decore-back {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;           /* ниже путешественницы */
+    width: 100%;           /* подгоните размер */
     height: auto;
-    pointer-events: none; /* чтобы картинка не мешала кликам */
+}
+
+.hero_img {
+    position: relative;
+    z-index: 1;           /* выше декора */
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
 }
