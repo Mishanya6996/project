@@ -1,3 +1,15 @@
+:root {
+    --primary-color: #DF6951;
+    --secondary-color: #F1A501;
+    --title-color: #181E4B;
+    --text-color: #5E6282;
+    --light-text: #212832;
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Volkhov', serif;
+    --container-width: 1200px;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +21,14 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+h1, h2, h3 {
+    font-family: var(--font-title);
+    color: var(--title-color);
+    font-weight: 700;
+}
+
+
+
 /* Контейнеры */
 .container,
 .header_container {
@@ -17,58 +37,63 @@ body {
     padding: 0 40px;
 }
 
-/* ========== HEADER ========== */
+
 .header {
     padding: 40px 0;
-    background: white;
+    position: relative; 
+    z-index: 10;        
 }
 
 .header_container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 .header_nav {
+    flex-grow: 1;
     display: flex;
-    align-items: center;
-    gap: 300px;
 }
 
 .header_nav ul {
     display: flex;
     list-style: none;
-    gap: 50px;
+    gap: 40px;
+    margin-left: auto;
+    margin-right: 60px;
 }
 
 .header_nav ul li a {
-    text-decoration: none;
-    color: #212832;
+    font-family: 'GoogleSans', sans-serif;
     font-weight: 500;
+    color: #212832;
+    text-decoration: none;
 }
 
 .header_actions {
+    font-family: 'GoogleSans', sans-serif;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 40px; 
 }
 
 .login-link,
 .signup-link {
     text-decoration: none;
     color: #212832;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .signup-link {
     border: 1px solid #212832;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 12px; 
 }
-
 .language-selector {
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /* ========== HERO ========== */
@@ -80,6 +105,7 @@ body {
     display: flex;
     align-items: center;
     gap: 60px;
+    position: relative;
 }
 
 .hero_content {
@@ -90,17 +116,19 @@ body {
     color: #DF6951;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
+    letter-spacing: 1px;
+    font-size: 18px;
 }
 
 .hero_title {
-    font-size: 84px;
+    position: relative; 
+    z-index: 2;         
+    font-family: 'Volkhov', serif; 
+    font-size: 69px;
     font-weight: 700;
     color: #181E4B;
     margin: 20px 0;
     line-height: 1.2;
-    white-space: nowrap;  /* добавляем эту строку, если нужно чтобы не переносилось */
 }
 
 .hero_text {
@@ -108,12 +136,26 @@ body {
     margin-bottom: 34px;
     max-width: 480px;
     line-height: 1.6;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .hero_buttons {
     display: flex;
+    font-family: 'GoogleSans', sans-serif;
     align-items: center;
     gap: 44px;
+}
+
+.hero_glow {
+    position: absolute;
+    top: -230px;        /* Чем меньше число, тем ВЫШЕ. Если нужно ещё выше, ставьте 0px или -10px */
+    left: -130px;     /* Сдвигаем влево к краю */
+    z-index: 0;
+    width: 240px;     /* Уменьшаем размер пятна */
+    height: auto;
+    opacity: 0.8;     /* Мягкое свечение */
+    pointer-events: none;
 }
 
 .btn_primary {
@@ -124,10 +166,12 @@ body {
     text-decoration: none;
     display: inline-block;
     font-weight: 500;
+    box-shadow: 0 10px 30px rgba(241, 165, 1, 0.4);
 }
 
 .btn_play {
     display: inline-flex;
+    font-family: 'Poppins', sans-serif;
     align-items: center;
     gap: 14px;
     text-decoration: none;
@@ -145,6 +189,7 @@ body {
     justify-content: center;
     color: white;
     font-size: 16px;
+    box-shadow: 0 8px 25px rgba(223, 105, 81, 0.5);
 }
 
 /* ========== ИЗОБРАЖЕНИЯ В HERO ========== */
@@ -162,12 +207,13 @@ body {
 /* Оранжевый декор сзади */
 .hero_decore-back {
     position: absolute;
-    bottom: -2px;
-    right: -50px;
+    top: -80px;      
+    right: -180px;    
     z-index: 0;
-    width: 200%;
-    max-width: 450px;
+    width: 100%;
+    max-width: none;  
     height: auto;
+    transform: scale(2);
 }
 
 /* Путешественница спереди */
@@ -175,11 +221,12 @@ body {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 10000px;
+    max-width: none;
     height: auto;
     display: block;
+    transform: scale(1.7); 
+    margin-top: 40px; 
 }
-
 /* ========== КРАСНАЯ ПОЛОСА ПОД ENJOY ========== */
 .hero_title .highlight-word {
     position: relative;
@@ -189,18 +236,21 @@ body {
 .hero_title .highlight-word::after {
     content: '';
     position: absolute;
-    bottom: -1px;
-    left: -350px;
-    width: calc(100% + 800px);
+    bottom: 5px;
+    left: -10px;           
+    width: calc(100% + 80px); 
     height: 12px;
     background-image: url('../images/decore_4.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    z-index: -1;
 }
 
 /* ========== SERVICES ========== */
 .services {
     padding: 60px 0;
+    position: relative; 
+    overflow: hidden;  
 }
 
 .section_subtitle {
@@ -226,11 +276,14 @@ body {
 }
 
 .service_card {
+    font-family: 'GoogleSans', sans-serif;
+    position: relative;
     text-align: center;
     padding: 35px 25px;
     border-radius: 36px;
     background: white;
 }
+
 
 .service_card:hover {
     box-shadow: 0 35px 50px rgba(0, 0, 0, 0.08);
@@ -240,11 +293,11 @@ body {
     width: 70px;
     height: 70px;
     object-fit: contain;
-    margin-bottom: 32px;
+    margin-bottom: 32px;    
 }
 
 .service_card h3 {
-    color: #1E1D4C;
+    font-family: 'GoogleSans', sans-serif;
     margin-bottom: 15px;
     font-size: 20px;
     font-weight: 600;
@@ -255,3 +308,731 @@ body {
     font-size: 16px;
     line-height: 1.5;
 }
+
+.services .container {
+    position: relative; 
+}
+
+.services_decore {
+    position: absolute;
+    top: 0px;        
+    right: -260px;    
+    width: 150px;     
+    height: auto;
+    z-index: 1;       
+    opacity: 0.6;     
+    pointer-events: none;
+}
+
+.service_icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+
+}
+.service_icon_1 img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+.service_card_decor {
+    position: absolute;
+    bottom: -35px; 
+    left: -35px;   
+    width: 100px;  
+    height: auto;
+    z-index: -1;   
+    pointer-events: none;
+    display: none; 
+}
+
+.service_card.active .service_card_decor {
+    display: block;
+}
+
+/* ========== TOP DESTINATIONS (ОБНОВЛЕННО) ========== */
+.destinations {
+    padding: 100px 0;
+}
+
+.destinations .container {
+    position: relative;
+}
+
+.destinations_grid {
+    display: flex;
+    justify-content: center;
+    gap: 35px; 
+    margin-top: 60px;
+    position: relative;
+    z-index: 2; 
+}
+
+.destination_card {
+    width: 315px;
+    background: white;
+    border-radius: 24px; 
+    overflow: hidden;    
+    display: flex;
+    flex-direction: column;
+    padding: 0;         
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.destination_card:hover {
+    transform: translateY(-10px);
+}
+
+.destination_image {
+    width: 100%;
+    height: 330px;       /* Увеличили высоту, чтобы картинка занимала большую часть карточки */
+    margin: 0;           /* Убираем любые внешние отступы у блока с фото */
+}
+
+.destination_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* Растягивает фото на всю ширину и высоту без искажений */
+    display: block;
+}
+
+.destination_info {
+    padding: 20px 25px 30px 25px; /* Внутренние отступы только для текстовой части */
+    background: white;
+}
+
+.destination_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.destination_header h3, 
+.destination_price {
+    color: #181E4B;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+.destination_duration {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #5E6282;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.destination_arrow {
+    width: 20px; 
+    height: 20px;
+}
+
+.destinations_decore {
+    position: absolute;
+    bottom: 50px;    
+    right: 50px;    
+    z-index: 1;      
+    pointer-events: none;
+}
+
+/* ========== BOOK YOUR NEXT TRIP ========== */
+.steps {
+    padding: 80px 0;
+}
+
+.steps_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.steps_content {
+    flex: 1;
+}
+
+.step_item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.step_icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step_icon img { width: 50px; }
+
+.step_details h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #5E6282;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.step_details p {
+    color: #5E6282;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+/* Визуальная часть (Карточки) */
+.steps_visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.trip_card {
+    background: white;
+    width: 370px;
+    padding: 20px 25px 30px;
+    border-radius: 26px;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2;
+}
+
+.trip_card_img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+.trip_card_body h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #080809;
+    margin-bottom: 10px;
+}
+
+.trip_card_date {
+    color: #84829A;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.trip_card_icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.icon_circle {
+    width: 36px;
+    height: 36px;
+    background: #F5F5F5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trip_card_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.people_going {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #84829A;
+    font-size: 16px;
+}
+
+/* Карточка Ongoing */
+.ongoing_card {
+    position: absolute;
+    bottom: 50px;
+    right: -100px;
+    background: white;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 12px;
+    width: 250px;
+}
+
+.ongoing_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ongoing_label {
+    color: #84829A;
+    font-size: 14px;
+}
+
+.ongoing_info h4 {
+    font-size: 18px;
+    color: #080809;
+    margin: 5px 0;
+}
+
+.ongoing_progress p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.ongoing_progress span { color: #8A79DF; font-weight: 600; }
+
+.progress_bar {
+    width: 100%;
+    height: 5px;
+    background: #F5F5F5;
+    border-radius: 10px;
+}
+
+.progress_fill {
+    height: 100%;
+    background: #8A79DF;
+    border-radius: 10px;
+}
+
+/* Синий градиент на фоне */
+.steps_glow {
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(89, 177, 230, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 1;
+    filter: blur(40px);
+}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials {
+    padding: 100px 0;
+}
+
+.testimonials_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.testimonials_left {
+    flex: 0 0 40%;
+}
+
+.testimonials_pagination {
+    display: flex;
+    gap: 25px;
+    margin-top: 80px;
+}
+
+.testimonials_pagination .dot {
+    width: 12px;
+    height: 12px;
+    background: #E5E5E5;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.testimonials_pagination .dot.active {
+    background: #39425D;
+}
+
+/* Стек карточек */
+.testimonials_right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 60px; /* место для стрелок */
+}
+
+.testimonials_stack {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 350px; /* высота для размещения стека */
+}
+
+.testimonial_card, .testimonial_card_bg {
+    background: white;
+    border-radius: 10px;
+    padding: 28px 34px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.04);
+}
+
+/* Фоновая карточка */
+.testimonial_card_bg {
+    position: absolute;
+    bottom: 0;
+    right: -40px;
+    width: 100%;
+    z-index: 1;
+    border: 2px solid #F7F7F7;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 240px;
+}
+
+/* Основная карточка */
+.testimonial_card {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.testimonial_avatar {
+    position: absolute;
+    top: -34px;
+    left: -34px;
+}
+
+.testimonial_avatar img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial_text {
+    font-size: 16px;
+    color: #5E6282;
+    line-height: 2;
+    font-weight: 500;
+    margin-bottom: 34px;
+}
+
+.author_name {
+    font-size: 18px;
+    color: #5E6282;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.author_pos {
+    font-size: 14px;
+    color: #5E6282;
+    font-weight: 500;
+}
+
+.testimonials_nav {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-left: 40px;
+}
+
+.nav_arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0; 
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_arrow img {
+    width: 16px; 
+    height: auto;
+    display: block;
+}
+
+.nav_arrow:hover {
+    transform: scale(1.2); 
+}
+
+.nav_arrow:active {
+    transform: scale(0.9); 
+}
+
+/* ========== PARTNERS ========== */
+.partners {
+    padding: 80px 0;
+}
+
+.partners_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.partner_item {
+    flex: 1;
+    min-width: 150px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.4s ease; 
+    cursor: pointer;
+}
+
+.partner_item img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%); 
+    opacity: 0.5;            
+    transition: all 0.4s ease;
+}
+
+.partner_item:hover {
+    background: #FFFFFF;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.06); 
+}
+
+.partner_item:hover img {
+    filter: grayscale(0%);    
+    opacity: 1;               
+}
+
+/* ========== SUBSCRIBE ========== */
+.subscribe {
+    padding: 80px 0 120px;
+    position: relative;
+}
+
+.subscribe_card {
+    background: #F9F7FE;
+    border-radius: 129px 20px 20px 20px;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden; 
+    text-align: center;
+    z-index: 2;
+}
+
+.subscribe_title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 33px;
+    line-height: 54px;
+    color: #5E6282;
+    margin-bottom: 74px;
+    position: relative;
+    z-index: 3;
+}
+
+.subscribe_form {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    z-index: 3;
+}
+
+.input_wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+}
+
+.input_icon {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+.input_wrapper input {
+    width: 100%;
+    padding: 25px 25px 25px 65px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.btn_subscribe {
+    background: linear-gradient(180deg, #FF946D 0%, #FF7D68 100%);
+    font-family: 'GoogleSans', sans-serif;
+    color: white;
+    padding: 0 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn_subscribe:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 125, 104, 0.3);
+}
+
+.subscribe_plane {
+    position: absolute;
+    top: -30px;      
+    right: -5px;    
+    z-index: 5;      
+}
+
+.subscribe_plane img {
+    width: 70px;    
+    height: auto;
+}
+
+.decor_circle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.1; 
+}
+
+.decor_circle--left {
+    bottom: -10%;
+    left: -5%;
+}
+
+.decor_circle--right {
+    top: -10%;
+    right: -5%;
+}
+
+.subscribe_plus {
+    position: absolute;
+    bottom: -70px;   
+    right: -90px;    
+    width: 153px;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    padding: 100px 0 40px;
+}
+
+.footer_grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.footer_brand {
+    max-width: 210px;
+}
+
+.footer_logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: #181E4B;
+    margin-bottom: 20px;
+}
+
+.footer_desc {
+    color: #5E6282;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.footer_links-wrapper {
+    display: flex;
+    gap: 80px;
+}
+
+.footer_col h4 {
+    font-size: 21px;
+    color: #080809;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.footer_col ul {
+    list-style: none;
+}
+
+.footer_col ul li {
+    margin-bottom: 12px;
+}
+
+.footer_col ul li a {
+    text-decoration: none;
+    color: #5E6282;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer_col ul li a:hover {
+    color: #DF6951;
+}
+
+.footer_right {
+    text-align: center;
+}
+
+.footer_socials {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 26px;
+}
+
+.footer_socials img {
+    width: 60px; 
+    height: 60px;
+    
+    transition: transform 0.3s ease; 
+}
+
+.footer_app-text {
+    color: #5E6282;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+}
+
+.footer_apps {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.footer_apps img {
+    height: 35px;
+    width: auto;
+}
+
+.footer_copyright {
+    text-align: center;
+    border-top: 1px solid transparent;
+}
+
+.footer_copyright p {
+    color: #5E6282;
+    font-size: 14px;
+    font-weight: 500;
+}
+
