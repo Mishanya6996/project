@@ -994,7 +994,7 @@ h1, h2, h3 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 50px;
+    gap: 220px;
     margin-bottom: 80px;
 }
 
@@ -1101,4 +1101,3 @@ h1, h2, h3 {
     font-size: 14px;
     font-weight: 500;
 }
-
