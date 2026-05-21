@@ -27,7 +27,27 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+/* Стиль для заголовков колонок в футере */
+.footer_col_title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 21px;
+    color: #080809;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
 
+/* Скрытый заголовок для доступности и SEO */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 
 /* Контейнеры */
 .container,
@@ -155,12 +175,12 @@ h1, h2, h3 {
 
 .hero_glow {
     position: absolute;
-    top: -230px;        /* Чем меньше число, тем ВЫШЕ. Если нужно ещё выше, ставьте 0px или -10px */
-    left: -130px;     /* Сдвигаем влево к краю */
+    top: -230px;
+    left: -130px;
     z-index: 0;
-    width: 240px;     /* Уменьшаем размер пятна */
+    width: 240px;
     height: auto;
-    opacity: 0.8;     /* Мягкое свечение */
+    opacity: 0.8;
     pointer-events: none;
 }
 
@@ -227,7 +247,6 @@ h1, h2, h3 {
     display: inline-block;
 }
 
-/* Оранжевый декор сзади */
 .hero_decore-back {
     position: absolute;
     top: -80px;      
@@ -239,7 +258,6 @@ h1, h2, h3 {
     transform: scale(2);
 }
 
-/* Путешественница спереди */
 .hero_img {
     position: relative;
     z-index: 1;
@@ -250,7 +268,7 @@ h1, h2, h3 {
     transform: scale(1.7); 
     margin-top: 40px; 
 }
-/* ========== КРАСНАЯ ПОЛОСА ПОД ENJOY ========== */
+
 .hero_title .highlight-word {
     position: relative;
     display: inline-block;
@@ -311,7 +329,6 @@ h1, h2, h3 {
     border-radius: 36px;
     background: white;
 }
-
 
 .service_card:hover {
     box-shadow: 0 35px 50px rgba(0, 0, 0, 0.08);
@@ -425,19 +442,19 @@ h1, h2, h3 {
 
 .destination_image {
     width: 100%;
-    height: 330px;       /* Увеличили высоту, чтобы картинка занимала большую часть карточки */
-    margin: 0;           /* Убираем любые внешние отступы у блока с фото */
+    height: 330px;
+    margin: 0;
 }
 
 .destination_image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;   /* Растягивает фото на всю ширину и высоту без искажений */
+    object-fit: cover;
     display: block;
 }
 
 .destination_info {
-    padding: 20px 25px 30px 25px; /* Внутренние отступы только для текстовой части */
+    padding: 20px 25px 30px 25px;
     background: white;
 }
 
@@ -524,14 +541,12 @@ h1, h2, h3 {
 
 .step_icon img { width: 50px; }
 
-
-.step_details h4 {
+.step_details h3 {
     font-family: 'Poppins', sans-serif;
     color: #5E6282;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 4px;
-    font-size: 20px;
 }
 
 .step_details p {
@@ -540,10 +555,8 @@ h1, h2, h3 {
     line-height: 1.3;
     width: 440px;
     font-size: 20px;
-    
 }
 
-/* Визуальная часть (Карточки) */
 .steps_visual {
     flex: 1;
     display: flex;
@@ -612,7 +625,6 @@ h1, h2, h3 {
     font-size: 16px;
 }
 
-/* Карточка Ongoing */
 .ongoing_card {
     position: absolute;
     bottom: 50px;
@@ -638,11 +650,12 @@ h1, h2, h3 {
     font-size: 14px;
 }
 
-.ongoing_info h4 {
+.ongoing_info h3 {
     font-size: 18px;
     color: #080809;
     margin: 5px 0;
     font-weight: 500;
+    font-family: 'Poppins', sans-serif;
 }
 
 .ongoing_progress p {
@@ -665,7 +678,6 @@ h1, h2, h3 {
     border-radius: 10px;
 }
 
-/* Синий градиент на фоне */
 .steps_glow {
     position: absolute;
     top: 0;
@@ -722,20 +734,19 @@ h1, h2, h3 {
     background: #39425D;
 }
 
-/* Стек карточек */
 .testimonials_right {
     flex: 1;
     display: flex;
     align-items: center;
     position: relative;
-    padding-right: 60px; /* место для стрелок */
+    padding-right: 60px;
 }
 
 .testimonials_stack {
     position: relative;
     width: 100%;
     max-width: 500px;
-    height: 350px; /* высота для размещения стека */
+    height: 350px;
 }
 
 .testimonial_card, .testimonial_card_bg {
@@ -745,7 +756,6 @@ h1, h2, h3 {
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.04);
 }
 
-/* Фоновая карточка */
 .testimonial_card_bg {
     position: absolute;
     bottom: 0;
@@ -759,7 +769,6 @@ h1, h2, h3 {
     height: 240px;
 }
 
-/* Основная карточка */
 .testimonial_card {
     position: absolute;
     top: 30px;
@@ -794,6 +803,7 @@ h1, h2, h3 {
     color: #5E6282;
     font-weight: 600;
     margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .author_pos {
@@ -1038,11 +1048,12 @@ h1, h2, h3 {
     gap: 80px;
 }
 
-.footer_col h4 {
+.footer_col h3 {
     font-size: 21px;
     color: #080809;
     margin-bottom: 30px;
     font-weight: 700;
+    font-family: 'Poppins', sans-serif;
 }
 
 .footer_col ul {
@@ -1114,4 +1125,3 @@ h1, h2, h3 {
     font-size: 14px;
     font-weight: 500;
 }
-
