@@ -816,7 +816,7 @@ h1, h2, h3 {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-left: 40px;
+    margin-left: 100px;
 }
 
 .nav_arrow {
@@ -1023,7 +1023,7 @@ h1, h2, h3 {
 
 .footer_brand {
     max-width: 230px;
-    left: 100px;
+    left: 40px;
     position: relative;
 }
 
