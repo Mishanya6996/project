@@ -1125,3 +1125,452 @@ h1, h2, h3 {
     font-size: 14px;
     font-weight: 500;
 }
+@media (max-width: 768px) {
+    /* Общие сбросы */
+    body .services,
+    body .destinations,
+    body .steps,
+    body .testimonials,
+    body .partners,
+    body .subscribe,
+    body .footer {
+        left: 0;
+        right: 0;
+    }
+
+    body .container {
+        padding: 0 15px;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* ХЕДЕР */
+    body .header_container {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    body .header_nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    body .header_nav ul {
+        margin-left: 0;
+        left: 0;
+        position: static;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    body .header_nav ul li a {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    body .header_actions {
+        left: 0;
+        position: static;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    body .login-link,
+    body .signup-link {
+        font-size: 11px;
+    }
+
+    body .signup-link {
+        padding: 4px 10px;
+    }
+
+    body .language-selector {
+        font-size: 11px;
+    }
+
+    /* HERO */
+    body .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    body .hero_content {
+        order: 1;
+    }
+
+    body .hero_image {
+        order: 0;
+        margin-bottom: 20px;
+    }
+
+    body .hero_badge {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+
+    body .hero_title {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+
+    body .hero_text {
+        font-size: 8px;
+        line-height: 1.2;
+        padding: 0 5px;
+        word-break: break-all;
+        white-space: normal;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    body .hero_buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    body .btn_primary {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    body .play_icon {
+        width: 28px;
+        top: 0;
+    }
+
+    body .play_demo span {
+        font-size: 11px;
+    }
+
+    body .hero_img {
+        transform: scale(1);
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    body .hero_decore-back,
+    body .hero_glow {
+        display: none;
+    }
+
+    /* SERVICES */
+    body .services {
+        padding: 30px 0;
+    }
+
+    body .services_grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    body .section_title {
+        font-size: 26px;
+        margin-bottom: 20px;
+        text-align: center;
+        word-break: break-word;
+        padding: 0 10px;
+    }
+
+    body .section_subtitle_category,
+    body .section_subtitle_top_selling,
+    body .section_subtitle_eaf,
+    body .section_subtitle_testimonals {
+        font-size: 11px;
+    }
+
+    body .service_card {
+        padding: 15px;
+    }
+
+    body .service_card h3 {
+        font-size: 16px;
+    }
+
+    body .service_card p {
+        font-size: 12px;
+    }
+
+    /* DESTINATIONS */
+    body .destinations {
+        padding: 30px 0;
+    }
+
+    body .destinations_grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    body .destination_card {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    body .destination_info {
+        padding: 10px 12px 12px;
+    }
+
+    body .destination_header h3,
+    body .destination_price {
+        font-size: 14px;
+    }
+
+    body .destination_duration {
+        font-size: 11px;
+    }
+
+    /* STEPS */
+    body .steps {
+        padding: 30px 0;
+    }
+
+    body .steps_wrapper {
+        flex-direction: column;
+    }
+
+    body .steps_content {
+        text-align: center;
+    }
+
+    body .step_item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    body .step_details p {
+        font-size: 12px;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    body .step_details h3 {
+        font-size: 16px;
+    }
+
+    body .trip_card {
+        max-width: 260px;
+        margin: 0 auto 15px;
+    }
+
+    body .ongoing_card {
+        position: static;
+        margin: 15px auto 0;
+        width: 220px;
+    }
+
+    /* TESTIMONIALS */
+    body .testimonials {
+        padding: 20px 15px;
+    }
+    
+    body .testimonials_left {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    body .section_subtitle_testimonals {
+        font-size: 10px;
+    }
+    
+    body .testimonials_right {
+        width: 100%;
+    }
+    
+    body .testimonial_card {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+        padding: 10px;
+        position: static;
+    }
+    
+    body .testimonial_card_bg {
+        display: none;
+    }
+    
+    body .testimonial_avatar {
+        display: none;
+    }
+    
+    body .testimonial_text {
+        font-size: 9px;
+        line-height: 1.3;
+        text-align: center;
+        word-break: break-word;
+    }
+    
+    body .author_name {
+        font-size: 10px;
+        text-align: center;
+    }
+    
+    body .author_pos {
+        font-size: 8px;
+        text-align: center;
+    }
+    
+    body .testimonials_pagination,
+    body .testimonials_nav {
+        display: none;
+    }
+
+    /* PARTNERS */
+    body .partners {
+        padding: 20px 0;
+    }
+
+    body .partners_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    body .partner_item {
+        flex: 0 0 calc(33.33% - 20px);
+        min-width: 70px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    body .partner_item img {
+        max-width: 50px;
+    }
+
+    /* SUBSCRIBE */
+    body .subscribe {
+        padding: 15px 0 25px;
+    }
+
+    body .subscribe_card {
+        padding: 10px 8px;
+        border-radius: 10px;
+        margin: 0 5px;
+    }
+
+    body .subscribe_title {
+        font-size: 9px;
+        line-height: 1.25;
+        margin-bottom: 10px;
+        word-break: break-word;
+        text-align: center;
+    }
+
+    body .subscribe_form {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    body .input_wrapper {
+        width: 100%;
+        max-width: 160px;
+    }
+
+    body .input_wrapper input {
+        padding: 4px 4px 4px 25px;
+        font-size: 9px;
+    }
+
+    body .input_icon {
+        width: 10px;
+        left: 6px;
+    }
+
+    body .btn_subscribe {
+        padding: 4px 12px;
+        font-size: 9px;
+    }
+
+    /* FOOTER */
+    body .footer {
+        padding: 25px 0 15px;
+    }
+
+    body .footer_grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+
+    body .footer_brand {
+        left: 0;
+    }
+
+    body .footer_logo {
+        font-size: 26px;
+    }
+
+    body .footer_desc {
+        font-size: 11px;
+    }
+
+    body .footer_links-wrapper {
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    body .footer_col_title {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    body .footer_col ul li a {
+        font-size: 11px;
+    }
+
+    body .footer_right {
+        right: 0;
+    }
+
+    body .footer_socials {
+        justify-content: center;
+    }
+
+    body .footer_socials img {
+        width: 28px;
+        height: 28px;
+        transform: scale(1);
+    }
+
+    body .footer_apps {
+        left: 0;
+        justify-content: center;
+    }
+
+    body .footer_app-text {
+        font-size: 12px;
+    }
+
+    body .footer_apps img {
+        height: 22px;
+    }
+
+    body .footer_copyright p {
+        font-size: 9px;
+    }
+
+    /* Скрываем декор */
+    body .service_card_decor,
+    body .services_decore,
+    body .destinations_decore,
+    body .steps_glow,
+    body .decor_circle,
+    body .decor_circle--left,
+    body .decor_circle--right,
+    body .subscribe_plus,
+    body .hero_decore-back {
+        display: none;
+    }
+}
+body .subscribe_plane {
+        display: none;
+    }
