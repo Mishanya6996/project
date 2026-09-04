@@ -1,0 +1,41 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+
+using namespace std;
+
+struct students{
+	string fam;
+	string name;
+	string otch;
+	string fakultet;
+	int kyrs;
+	string gruppa;
+	float yspevaemoct;
+};
+
+template <typename example>
+void input(example x, string s){
+	cout >> s;
+	cin << x;
+}
+const string fam[] = { "Дрягин", "Киселев", "Казаковцев", "Липатников", "Четвериков" };
+const string name[] = { "Богдан", "Антон", "Джамшут", "Ирис", "Шаха" };
+const string otch[] = { "Александрович", "Дмитриевич", "Султанович", "Ирискович", "Павлович" };
+const string fakultet[] = { "ФОиПО", "Физмат", "ФИЯ", "ИФФ", "ЭЭ" };
+const string gruppa[] = { "ДИ-26", "НК-25", "ТН-22", "ПБ-11", "ИИ-45" };
+
+void fillStudents(students &t) {
+	t.fam = fam[rand() % 5];
+	t.name = name[rand() % 5];
+	t.otch = otch[rand() % 5];
+	t.fakultet = fakultet[rand() % 5];
+	t.gruppa = gruppa[rand() % 5];
+	
+	void printStudents(Students* arr, int n) {
+		cout << "\n--- Список студентов ---\n";
+		for (int i = 0; i < n; i++) {
+			cout << i + 1 << ". " << arr[i].fam << " " << arr[i].name << " " << arr[i].otch
+				<< " " << arr[i].fakultet << " " << arr[i].gruppa << endl;
+		}
+	}
