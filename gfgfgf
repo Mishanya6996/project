@@ -1,41 +1,110 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-
 using namespace std;
 
-struct students{
-	string fam;
-	string name;
-	string otch;
-	string fakultet;
-	int kyrs;
-	string gruppa;
-	float yspevaemoct;
+struct Student {
+    string Fam;      
+    string Name;  
+    string Otch;      
+    string Faculty;   
+    int Course;      
+    string Group;   
+    double Average;
 };
 
-template <typename example>
-void input(example x, string s){
-	cout >> s;
-	cin << x;
-}
-const string fam[] = { "Дрягин", "Киселев", "Казаковцев", "Липатников", "Четвериков" };
-const string name[] = { "Богдан", "Антон", "Джамшут", "Ирис", "Шаха" };
-const string otch[] = { "Александрович", "Дмитриевич", "Султанович", "Ирискович", "Павлович" };
-const string fakultet[] = { "ФОиПО", "Физмат", "ФИЯ", "ИФФ", "ЭЭ" };
-const string gruppa[] = { "ДИ-26", "НК-25", "ТН-22", "ПБ-11", "ИИ-45" };
+const string families[] = {"Иванов", "Петров", "Сидоров", "Кузнецов", "Смирнов"};
+const string names[] = {"Иван", "Петр", "Алексей", "Дмитрий", "Сергей"};
+const string otches[] = {"Иванович", "Петрович", "Алексеевич", "Дмитриевич"};
+const string faculties[] = {"ФОиПО", "ФФК", "ФИЯ", "ЭЭ"};
+const string groups[] = {"ДИ-16", "НК-15", "ЭЭ-21", "ЭБ-32", "ММ-41"};
 
-void fillStudents(students &t) {
-	t.fam = fam[rand() % 5];
-	t.name = name[rand() % 5];
-	t.otch = otch[rand() % 5];
-	t.fakultet = fakultet[rand() % 5];
-	t.gruppa = gruppa[rand() % 5];
-	
-	void printStudents(Students* arr, int n) {
-		cout << "\n--- Список студентов ---\n";
-		for (int i = 0; i < n; i++) {
-			cout << i + 1 << ". " << arr[i].fam << " " << arr[i].name << " " << arr[i].otch
-				<< " " << arr[i].fakultet << " " << arr[i].gruppa << endl;
-		}
-	}
+template<typename T>
+T input(const string& message) {
+    T value;
+    cout << message;
+    cin >> value;
+    return value;
+}
+
+void inputCount(int &n) {
+    n = input<int>("Введите количество студентов: ");
+}
+
+Student* allocateMemory(int n) {
+    Student* arr = new Student[n];
+    return arr;
+}
+
+void freeMemory(Student* &arr) {
+    if (arr != nullptr) {
+        delete[] arr;
+        arr = nullptr;
+    }
+}
+
+void fillStudent(Student &s) {
+    s.Fam = families[rand() % 5];
+    s.Name = names[rand() % 5];
+    s.Otch = otches[rand() % 4];
+    s.Faculty = faculties[rand() % 4];
+    s.Course = rand() % 4 + 1;        // курс 1-4
+    s.Group = groups[rand() % 5];
+    s.Average = (rand() % 31 + 20) / 10.0; // от 2.0 до 5.0 (шаг 0.1)
+}
+
+void fillAllStudents(Student* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        fillStudent(arr[i]);
+    }
+}
+
+void printStudents(Student* arr, int n) {
+    cout << "\n--- Список всех студентов ---\n";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i].Fam << " " << arr[i].Name << " " << arr[i].Otch
+             << ", факультет: " << arr[i].Faculty
+             << ", курс: " << arr[i].Course
+             << ", группа: " << arr[i].Group
+             << ", средний балл: " << arr[i].Average << endl;
+    }
+}
+
+void printStudentsInRange(Student* arr, int n) {
+    cout << "\n=== Студенты со средним баллом от 3 до 4 ===\n";
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        if (arr[i].Average >= 3.0 && arr[i].Average <= 4.0) {
+            cout << arr[i].Fam << " " << arr[i].Name << " " << arr[i].Otch
+                 << ", факультет: " << arr[i].Faculty
+                 << ", курс: " << arr[i].Course
+                 << ", группа: " << arr[i].Group
+                 << ", средний балл: " << arr[i].Average << endl;
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "Студентов с баллом от 3 до 4 не найдено." << endl;
+    }
+}
+
+int main() {
+    srand(time(0));
+
+    Student* students = nullptr;
+    int n = 0;
+
+    inputCount(n);
+    if (n <= 0) {
+        cout << "Ошибка: количество студентов должно быть больше 0" << endl;
+        return 1;
+    }
+
+    students = allocateMemory(n);
+    fillAllStudents(students, n);
+    printStudents(students, n);
+    printStudentsInRange(students, n);
+
+    freeMemory(students);
+    return 0;
+}
