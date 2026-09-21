@@ -1,0 +1,126 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+
+using namespace std;
+
+template <typename example>
+void input(example& x, string s) {
+	cout << s;
+	cin >> x;
+}
+
+template <typename example>
+void output(example x, string s) {
+	cout << s << x << endl;
+}
+
+class Cilindr {
+private:
+	float size_high, size_radius, ploshad_size, v_size;
+public:
+	Cilindr(float size_high = 0, float size_radius = 0, float ploshad = 0, float v_size = 0) {
+		setSizeHigh();
+		setSizeRadius();
+	}
+
+	void setSizeHigh() {
+		input(size_high, "input size of high: ");
+	}
+
+	void setSizeRadius() {
+		input(size_radius, "input size of radius: ");
+	}
+
+	float getSizeHigh() {
+		return size_high;
+	}
+
+	float getSizeRadius() {
+		return size_radius;
+	}
+
+	float getPloshad() {
+		float radius = getSizeRadius();
+		ploshad_size = 3.14 * (radius * radius);
+		return ploshad_size;
+	}
+
+	float getA_size() {
+		float high = getSizeHigh();
+		float radius = getSizeRadius();
+		float S_osn = 3.14 * (radius * radius);
+		float v_size = S_osn * high;
+		output(v_size, "V size: ");
+	}
+
+	float getV_size() {
+		float high = getSizeHigh();
+		float radius = getSizeRadius();
+		float S_osn = 3.14 * (radius * radius);
+		v_size = S_osn * high;
+		return v_size;
+	}
+
+	void printInfo() {
+		output(size_high, "hign: ");
+		output(size_radius, "radius: ");
+		ploshad_size = getPloshad();
+		output(ploshad_size, "ploshad: ");
+		cout << endl;
+	}
+};
+
+void countCilindr(Cilindr* arr, int count) {
+	for (int i = 0; i < count; i++) {
+		cout << "Cilindr number " << i << endl;
+		arr[i].printInfo();
+	}
+}
+
+void maxPloshad(Cilindr* arr, int count) {
+	float max = arr[0].getPloshad();
+	int max_i = 0;
+	for (int i = 0; i < count; i++) {
+		if (arr[i].getPloshad() > max) {
+			max = arr[i].getPloshad();
+			max_i = i;
+		}
+	}
+	output(max_i, "cilindr with max ploshad: ");
+}
+
+void maxVolume(Cilindr* arr, int count) {
+	float max = arr[0].getV_size();
+	int max_i = 0;
+	for (int i = 0; i < count; i++) {
+		if (arr[i].getV_size() > max) {
+			max = arr[i].getV_size();
+			max_i = i;
+		}
+	}
+	output(max_i, "cilindr with max volume: ");
+}
+
+Cilindr* newMassiv(int count) {
+	Cilindr* arr = new Cilindr[count];
+	return arr;
+}
+
+void deleteMassiv(Cilindr*& arr) {
+	delete[]arr;
+	arr = nullptr;
+}
+
+int main() {
+	Cilindr cilindr;
+	int count;
+	input(count, "input count of cilindr: ");
+	Cilindr* arr = newMassiv(count);
+	countCilindr(arr, count);
+	maxPloshad(arr, count);
+	maxVolume(arr, count);
+	deleteMassiv(arr);
+	_getch();
+	return 0;
+}
