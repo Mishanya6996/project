@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 #include <string>
 
 using namespace std;
@@ -19,17 +18,15 @@ class Cilindr {
 private:
 	float size_high, size_radius, ploshad_size, v_size;
 public:
-	Cilindr(float size_high = 0, float size_radius = 0, float ploshad = 0, float v_size = 0) {
-		setSizeHigh();
-		setSizeRadius();
+	Cilindr() {
+		size_high = 0;
+		size_radius = 0;
+		ploshad_size = 0;
+		v_size = 0;
 	}
-
-	void setSizeHigh() {
-		input(size_high, "input size of high: ");
-	}
-
-	void setSizeRadius() {
-		input(size_radius, "input size of radius: ");
+	void inputInfo() {
+		input(size_high, "введите размер высоты: ");
+		input(size_radius, "введите размер радиуса: ");
 	}
 
 	float getSizeHigh() {
@@ -41,39 +38,33 @@ public:
 	}
 
 	float getPloshad() {
-		float radius = getSizeRadius();
-		ploshad_size = 3.14 * (radius * radius);
+		ploshad_size = 3.14 * (size_radius * size_radius);
 		return ploshad_size;
 	}
 
-	float getA_size() {
-		float high = getSizeHigh();
-		float radius = getSizeRadius();
-		float S_osn = 3.14 * (radius * radius);
-		float v_size = S_osn * high;
-		output(v_size, "V size: ");
-	}
-
 	float getV_size() {
-		float high = getSizeHigh();
-		float radius = getSizeRadius();
-		float S_osn = 3.14 * (radius * radius);
-		v_size = S_osn * high;
+		v_size = getPloshad() * size_high;
 		return v_size;
 	}
 
 	void printInfo() {
-		output(size_high, "hign: ");
-		output(size_radius, "radius: ");
-		ploshad_size = getPloshad();
-		output(ploshad_size, "ploshad: ");
+		output(size_high, "высота: ");
+		output(size_radius, "радиус: ");
+		output(getPloshad(), "площадь: ");
+		output(getV_size(), "объём: ");
 		cout << endl;
 	}
 };
+void inputMassiv(Cilindr* arr, int count) {
+	for (int i = 0; i < count; i++) {
+		cout << "\n--- Ввод данных для цилиндра номер " << i + 1 << " ---" << endl;
+		arr[i].inputInfo();
+	}
+}
 
 void countCilindr(Cilindr* arr, int count) {
 	for (int i = 0; i < count; i++) {
-		cout << "Cilindr number " << i << endl;
+		cout << "Цилиндр номер " << i + 1 << endl;
 		arr[i].printInfo();
 	}
 }
@@ -81,46 +72,50 @@ void countCilindr(Cilindr* arr, int count) {
 void maxPloshad(Cilindr* arr, int count) {
 	float max = arr[0].getPloshad();
 	int max_i = 0;
-	for (int i = 0; i < count; i++) {
+	for (int i = 1; i < count; i++) {
 		if (arr[i].getPloshad() > max) {
 			max = arr[i].getPloshad();
 			max_i = i;
 		}
 	}
-	output(max_i, "cilindr with max ploshad: ");
+	output(max_i + 1, "Цилиндр с максимальной площадью (номер): ");
 }
 
 void maxVolume(Cilindr* arr, int count) {
 	float max = arr[0].getV_size();
 	int max_i = 0;
-	for (int i = 0; i < count; i++) {
+	for (int i = 1; i < count; i++) {
 		if (arr[i].getV_size() > max) {
 			max = arr[i].getV_size();
 			max_i = i;
 		}
 	}
-	output(max_i, "cilindr with max volume: ");
+	output(max_i + 1, "Цилиндр с максимальным объёмом (номер): ");
 }
 
 Cilindr* newMassiv(int count) {
-	Cilindr* arr = new Cilindr[count];
-	return arr;
+	return new Cilindr[count];
 }
 
 void deleteMassiv(Cilindr*& arr) {
-	delete[]arr;
+	delete[] arr;
 	arr = nullptr;
 }
 
 int main() {
-	Cilindr cilindr;
 	int count;
-	input(count, "input count of cilindr: ");
+	input(count, "введитье количество цилиндров: ");
+	if (count <= 0) {
+		cout << "Недопустимое число" << endl;
+		return 1;
+	}
 	Cilindr* arr = newMassiv(count);
+	inputMassiv(arr, count);
+	cout << "\n=== Вся информация о цилиндрах ===" << endl;
 	countCilindr(arr, count);
+	cout << "=== Результаты ===" << endl;
 	maxPloshad(arr, count);
 	maxVolume(arr, count);
 	deleteMassiv(arr);
-	_getch();
 	return 0;
 }
