@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 template <typename example>
@@ -70,29 +69,69 @@ void countCilindr(Cilindr* arr, int count) {
 }
 
 void maxPloshad(Cilindr* arr, int count) {
-	float max = arr[0].getPloshad();
-	int max_i = 0;
-	for (int i = 1; i < count; i++) {
-		if (arr[i].getPloshad() > max) {
-			max = arr[i].getPloshad();
-			max_i = i;
-		}
-	}
-	output(max_i + 1, "Цилиндр с максимальной площадью (номер): ");
+    float max = arr[0].getPloshad();
+    for (int i = 1; i < count; i++) {
+        if (arr[i].getPloshad() > max) {
+            max = arr[i].getPloshad();
+        }
+    }
+    int countMax = 0;
+    for (int i = 0; i < count; i++) {
+        if (arr[i].getPloshad() == max) {
+            countMax++;
+        }
+    }
+
+    if (countMax > 1) {
+        cout << "Площади у нескольких фигур равны (максимальная площадь = "
+             << max << "): ";
+        for (int i = 0; i < count; i++) {
+            if (arr[i].getPloshad() == max) {
+                cout << i + 1 << " ";
+            }
+        }
+        cout << endl;
+    } else {
+        for (int i = 0; i < count; i++) {
+            if (arr[i].getPloshad() == max) {
+                cout << "Цилиндр с максимальной площадью (номер): " << i + 1 << endl;
+            }
+        }
+    }
 }
 
 void maxVolume(Cilindr* arr, int count) {
-	float max = arr[0].getV_size();
-	int max_i = 0;
-	for (int i = 1; i < count; i++) {
-		if (arr[i].getV_size() > max) {
-			max = arr[i].getV_size();
-			max_i = i;
-		}
-	}
-	output(max_i + 1, "Цилиндр с максимальным объёмом (номер): ");
-}
+    float max = arr[0].getV_size();
+    for (int i = 1; i < count; i++) {
+        if (arr[i].getV_size() > max) {
+            max = arr[i].getV_size();
+        }
+    }
 
+    int countMax = 0;
+    for (int i = 0; i < count; i++) {
+        if (arr[i].getV_size() == max) {
+            countMax++;
+        }
+    }
+
+    if (countMax > 1) {
+        cout << "Объёмы у нескольких фигур равны (максимальный объём = "
+             << max << "): ";
+        for (int i = 0; i < count; i++) {
+            if (arr[i].getV_size() == max) {
+                cout << i + 1 << " ";
+            }
+        }
+        cout << endl;
+    } else {
+        for (int i = 0; i < count; i++) {
+            if (arr[i].getV_size() == max) {
+                cout << "Цилиндр с максимальным объёмом (номер): " << i + 1 << endl;
+            }
+        }
+    }
+}
 Cilindr* newMassiv(int count) {
 	return new Cilindr[count];
 }
@@ -103,8 +142,9 @@ void deleteMassiv(Cilindr*& arr) {
 }
 
 int main() {
+	setlocale(LC_ALL, "Russian");
 	int count;
-	input(count, "введитье количество цилиндров: ");
+	input(count, "введите количество цилиндров: ");
 	if (count <= 0) {
 		cout << "Недопустимое число" << endl;
 		return 1;
