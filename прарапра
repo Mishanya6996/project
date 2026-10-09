@@ -15,6 +15,7 @@ void output(example x, string s) {
 
 class Cilindr {
 private:
+    int id;
 	float size_high, size_radius, ploshad_size, v_size;
 public:
 	Cilindr() {
@@ -23,11 +24,19 @@ public:
 		ploshad_size = 0;
 		v_size = 0;
 	}
+	void setId(int number) {
+        id = number;
+    }
+    
+    int getId() {
+        return id;
+    }
+    
 	void inputInfo() {
 		input(size_high, "введите размер высоты: ");
 		input(size_radius, "введите размер радиуса: ");
 	}
-
+    
 	float getSizeHigh() {
 		return size_high;
 	}
@@ -56,14 +65,15 @@ public:
 };
 void inputMassiv(Cilindr* arr, int count) {
 	for (int i = 0; i < count; i++) {
-		cout << "\n--- Ввод данных для цилиндра номер " << i + 1 << " ---" << endl;
+	    arr[i].setId(i + 1);
+		cout << "\n--- Ввод данных для цилиндра номер " << arr[i].getId() << " ---" << endl;
 		arr[i].inputInfo();
 	}
 }
 
 void countCilindr(Cilindr* arr, int count) {
 	for (int i = 0; i < count; i++) {
-		cout << "Цилиндр номер " << i + 1 << endl;
+		cout << "Цилиндр номер " << arr[i].getId() << endl;
 		arr[i].printInfo();
 	}
 }
@@ -87,14 +97,14 @@ void maxPloshad(Cilindr* arr, int count) {
              << max << "): ";
         for (int i = 0; i < count; i++) {
             if (arr[i].getPloshad() == max) {
-                cout << i + 1 << " ";
+                cout << arr[i].getId() << " ";
             }
         }
         cout << endl;
     } else {
         for (int i = 0; i < count; i++) {
             if (arr[i].getPloshad() == max) {
-                cout << "Цилиндр с максимальной площадью (номер): " << i + 1 << endl;
+                cout << "Цилиндр с максимальной площадью (номер): " << arr[i].getId() << endl;
             }
         }
     }
@@ -120,14 +130,14 @@ void maxVolume(Cilindr* arr, int count) {
              << max << "): ";
         for (int i = 0; i < count; i++) {
             if (arr[i].getV_size() == max) {
-                cout << i + 1 << " ";
+                cout << arr[i].getId() << " ";
             }
         }
         cout << endl;
     } else {
         for (int i = 0; i < count; i++) {
             if (arr[i].getV_size() == max) {
-                cout << "Цилиндр с максимальным объёмом (номер): " << i + 1 << endl;
+                cout << "Цилиндр с максимальным объёмом (номер): " << arr[i].getId() << endl;
             }
         }
     }
